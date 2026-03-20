@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content → Traffic Engine | Visual Content Library</title>
+    <meta name="description" content="Turn your content into a traffic machine. Professional visuals, animations, and videos that generate real audience growth.">
+    
+    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #EC489A;
+            --primary-dark: #DB2777;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .bg-gradient-dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #EC489A, #DB2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #EC489A, #DB2777);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(236, 72, 154, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #EC489A;
+            color: #EC489A;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(236, 72, 154, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #94a3b8;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #EC489A;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(236, 72, 154, 0.3);
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(15, 23, 42, 0.8) 100%);
+            z-index: 1;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: rgba(15, 23, 42, 0.9);
+            color: white;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .video-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover {
+            border-color: #EC489A;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(236, 72, 154, 0.15);
+        }
+        
+        video {
+            border-radius: 8px;
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .video-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border-radius: 8px;
+        }
+        
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #EC489A;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .contact-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: #EC489A;
+            box-shadow: 0 0 0 3px rgba(236, 72, 154, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-700 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold">Content → Traffic</div>
+                        <div class="text-xs text-pink-300 font-medium">visual library</div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#gallery" class="nav-link font-medium">Gallery</a>
+                    <a href="#videos" class="nav-link font-medium">Videos</a>
+                    <a href="#process" class="nav-link font-medium">Process</a>
+                    <a href="#contact" class="btn-primary px-6 py-2 rounded-lg font-medium">Contact</a>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobileMenu" class="hidden md:hidden mt-4 border-t border-gray-700 pt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#gallery" class="text-gray-300 hover:text-white font-medium">Gallery</a>
+                    <a href="#videos" class="text-gray-300 hover:text-white font-medium">Videos</a>
+                    <a href="#process" class="text-gray-300 hover:text-white font-medium">Process</a>
+                    <a href="#contact" class="btn-primary px-6 py-2 rounded-lg font-medium inline-block text-center">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-20 bg-gradient-dark">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+                    Your Content, <span class="text-gradient-primary">Guaranteed Traffic</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s">
+                    Professional visuals, animations, and videos that don't just look good — they bring real audience growth.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay: 0.4s">
+                    <a href="#contact" class="btn-primary font-semibold px-8 py-3 rounded-lg text-lg">
+                        <i class="fas fa-rocket mr-2"></i> Get Your Traffic Plan
+                    </a>
+                    <a href="#videos" class="btn-secondary font-semibold px-8 py-3 rounded-lg text-lg">
+                        <i class="fas fa-play-circle mr-2"></i> Watch Examples
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-3xl mx-auto">
+                    <div class="stat-card p-4 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-pink-400 mb-2">50+</div>
+                        <div class="text-gray-400">ready posters</div>
+                    </div>
+                    <div class="stat-card p-4 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-pink-400 mb-2">20+</div>
+                        <div class="text-gray-400">animated videos</div>
+                    </div>
+                    <div class="stat-card p-4 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-pink-400 mb-2">15+</div>
+                        <div class="text-gray-400">brands</div>
+                    </div>
+                    <div class="stat-card p-4 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-pink-400 mb-2">10</div>
+                        <div class="text-gray-400">days to launch</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Poster Gallery</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Visual content created for brands across different industries</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="posterGrid">
+                <a href="images/1.png" data-lightbox="gallery" data-title="Work 1" class="gallery-item">
+                    <img src="images/1.png" alt="Work 1" class="w-full h-64 object-cover">
+                    <div class="gallery-caption">
+                        <div class="font-semibold">ZIPPETS Collection</div>
+                        <div class="text-sm text-gray-300">Brand storytelling</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-400">
+                    <i class="fas fa-info-circle text-pink-400 mr-2"></i>
+                    All visuals created to drive engagement and traffic. Custom work available.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="py-16 bg-gradient-dark">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Video Library</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Animated content that stops the scroll</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="videoGrid">
+                <div class="video-card rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <div class="video-loading">
+                            <i class="fas fa-spinner fa-spin text-pink-400 text-2xl"></i>
+                        </div>
+                        <video class="w-full h-48 object-cover" controls poster="images/1.png" 
+                               onloadeddata="this.previousElementSibling.style.display='none'">
+                            <source src="videos/video1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-duration">0:30</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">ZIPPETS Animation</h3>
+                        <p class="text-gray-400 text-sm">Brand story in motion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">How We Turn Content Into Traffic</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">A systematic approach backed by data</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="step-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-pink-400 mb-3">1. Analysis</h3>
+                    <p class="text-gray-300">We study what works in your niche — hooks, visuals, formats that actually drive engagement.</p>
+                </div>
+                <div class="step-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-pink-400 mb-3">2. Strategy</h3>
+                    <p class="text-gray-300">We build a content system designed for traffic — not just "nice posts".</p>
+                </div>
+                <div class="step-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-pink-400 mb-3">3. Creation</h3>
+                    <p class="text-gray-300">We produce professional visuals and videos that match your brand and speak to your audience.</p>
+                </div>
+                <div class="step-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-pink-400 mb-3">4. Traffic</h3>
+                    <p class="text-gray-300">Your content becomes a traffic machine — measurable, scalable, predictable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-gradient-dark">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Ready to Turn Content Into Traffic?</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Let's talk about your brand and what we can build together</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Leave a request</h3>
+                        
+                        <form action="https://formsubmit.co/digitaleng.contact@gmail.com" method="POST" class="space-y-6">
+                            <div>
+                                <label class="block text-gray-300 mb-2">Your name</label>
+                                <input type="text" name="name" required class="contact-input w-full px-4 py-3 rounded-lg">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-300 mb-2">Email</label>
+                                <input type="email" name="email" required class="contact-input w-full px-4 py-3 rounded-lg">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-300 mb-2">Website / link</label>
+                                <input type="url" name="website" class="contact-input w-full px-4 py-3 rounded-lg" placeholder="https://">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-300 mb-2">What do you need?</label>
+                                <textarea name="message" rows="4" class="contact-input w-full px-4 py-3 rounded-lg"></textarea>
+                            </div>
+                            
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_next" value="thankyou.html">
+                            <input type="hidden" name="_subject" value="New traffic inquiry">
+                            
+                            <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">
+                                Send message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gray-900 rounded-xl p-8">
+                            <h3 class="text-2xl font-semibold mb-6">Contacts</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-user text-pink-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Gennady Konstantinov</h4>
+                                        <p class="text-gray-400">Project Manager</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-envelope text-pink-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Email</h4>
+                                        <p class="text-gray-400">digitaleng.contact@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fab fa-telegram text-pink-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Telegram</h4>
+                                        <p class="text-gray-400">@DigitalEng_Support</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-700 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold">Content → Traffic</div>
+                            <div class="text-xs text-pink-300 font-medium">visual library</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Turning branded visuals into measurable audience growth.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Sections</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#gallery" class="text-gray-400 hover:text-pink-400 transition-colors">Gallery</a></li>
+                        <li><a href="#videos" class="text-gray-400 hover:text-pink-400 transition-colors">Videos</a></li>
+                        <li><a href="#process" class="text-gray-400 hover:text-pink-400 transition-colors">Process</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-pink-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Projects</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://ngu2025.github.io/digitaleng-site/" target="_blank" class="text-gray-400 hover:text-pink-400 transition-colors">Digital Engineering</a></li>
+                        <li><a href="https://ngu2025.github.io/landing-ai-solutions/" target="_blank" class="text-gray-400 hover:text-pink-400 transition-colors">AI Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Ecosystem</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://ngu2025.github.io/" target="_blank" class="text-gray-400 hover:text-pink-400 transition-colors">Matrix Digital Health</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Content → Traffic Engine. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function() {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+                    submitBtn.disabled = true;
+                }
+            });
+        }
+        
+        if (typeof lightbox !== 'undefined') {
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'albumLabel': 'Image %1 of %2',
+                'fadeDuration': 300
+            });
+        }
+        
+        setTimeout(() => {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('error', () => {
+                    console.log('Video failed to load');
+                });
+                video.addEventListener('loadeddata', () => {
+                    console.log('Video loaded successfully');
+                });
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
